@@ -1,0 +1,44 @@
+<div>
+  <p>about works!</p>
+  <h3>with {{ name }}</h3>
+  <img [src]="imageURL" width="200" [alt]="alternative" />
+  <button (click)="change()">change name</button>
+  <h3>New name : <input type="text" [(ngModel)]="sname" /></h3>
+</div>
+<div *ngFor="let todo of todos">
+  <div>
+    Title :{{ todo.title }} - -
+    <span *ngIf="todo.done"
+      ><img
+        src="https://e7.pngegg.com/pngimages/983/597/png-clipart-hanoi-true-miscellaneous-angle.png"
+        width="30"
+        alt="True"
+    /></span>
+  </div>
+</div>
+<button (click)="change()">change</button>
+<ng-template #crossImage>
+  <img
+    src="https://www.rawshorts.com/freeicons/wp-content/uploads/2017/01/red_prodpictxmark_2_1484336301-1.png"
+    width="20"
+    alt="false"
+  />
+</ng-template>
+<div
+  [ngStyle]="{ backgroundColor: theme }"
+  [ngClass]="{ 'bg-dark': theme === 'black', 'bg-not-dark': theme !== 'black' }"
+>
+  <div>
+    Theme :
+    <select [(ngModel)]="theme">
+      <option value="white">Default</option>
+      <option value="grey">Light</option>
+      <option value="black">Dark</option>
+    </select>
+  </div>
+  <div [ngSwitch]="theme">
+    <div *ngSwitchCase="'white'">background : White</div>
+    <div *ngSwitchCase="'grey'">background : Grey</div>
+    <div *ngSwitchCase="'black'">background : Black</div>
+  </div>
+</div>
